@@ -1,0 +1,70 @@
+<div class="text-center mt-5">
+<form class="form-horizontal bg-light" action="/submit_eval1_form/<%= evalpage %>" method="post" style="width: 100%;margin:auto;">
+
+
+<!-- Form Name -->
+<legend>Employee Performance Evaluation</legend>
+
+ <p class="h6"> <%= catdata[0].name %></p>
+
+<!-- Multiple Radios (inline) -->
+<div class="container-fluid form-group">
+  <% data.forEach(function(item, index){ %>
+    <div class="row">
+
+   <div class="col col-lg-3 align-self-center">
+    <p class="h6 pull-left" ><%= item.name %></p>
+   </div> 
+    <div class="col-sm form-check form-check-inline radio-box">
+      <p class="h6" >Poor</p>
+     <label class="radio-inline" for="radios-0<%= index %>">
+      <input type="radio" name="radios<%= index %>" id="radios-0<%= index %>" value="1" checked="checked">
+      1
+     </label> 
+    </div>
+    <div class="col-sm form-check form-check-inline radio-box">
+      <p class="h6" >Average</p>
+     <label class="radio-inline" for="radios-1<%= index %>">
+      <input type="radio" name="radios<%= index %>" id="radios-1<%= index %>" value="2">
+      2
+     </label> 
+   </div>
+   <div class="col-sm form-check form-check-inline radio-box">
+    <p class="h6" >Good</p>
+    <label class="radio-inline" for="radios-2<%= index %>">
+      <input type="radio" name="radios<%= index %>" id="radios-2<%= index %>" value="3">
+      3
+    </label> 
+   </div>
+   <div class="col-sm form-check form-check-inline radio-box">
+    <p class="h6" >Excellent</p>
+    <label class="radio-inline" for="radios-3<%= index %>">
+      <input type="radio" name="radios<%= index %>" id="radios-3<%= index %>" value="4">
+      4
+    </label>
+   </div>
+   <div class="col-sm form-check form-check-inline radio-box">
+    <p class="h6" >Outstanding</p>
+    <label class="radio-inline" for="radios-4<%= index %>">
+      <input type="radio" name="radios<%= index %>" id="radios-4<%= index %>" value="5">
+      5
+    </label>
+   </div>
+   <div class="col-sm form-check form-check-inline radio-box">
+    <p class="h6" >N/A</p>
+    <label class="radio-inline" for="radios-5<%= index %>">
+      <input type="radio" name="radios<%= index %>" id="radios-5<%= index %>" value="-">
+      -
+    </label>
+  </div>
+  <div class="col col-lg-3 form-check form-check-inline">
+        <label for="name">Notes</label>
+    <textarea type="text" class="form-control" name="eval1a-note-<%= index %>" placeholder="Enter Notes"></textarea>
+  </div>
+ </div>
+<% }); %>
+
+</div>
+<button type="submit" class="btn btn-primary"><%= bsubmit %></button>
+</form>
+</div>

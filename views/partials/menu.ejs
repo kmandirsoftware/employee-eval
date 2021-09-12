@@ -1,0 +1,44 @@
+
+<nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+    <div class="container-fluid">
+        <a href="#" class="navbar-brand">
+            <img src="./img/logo-icon.svg" height="30" class="d-inline-block align-top" alt="Imagine">
+            Imagine
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a href="/" class="nav-link active">Home</a></li>
+                <li class="nav-item dropdown">
+                   <a href="#" class="nav-link dropdown-toggle" id="navbarProgramMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Employees</a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarProgramMenuLink">
+                        <li><a class="dropdown-item" href="/employemgt">Add</a></li>
+                        <li><a class="dropdown-item" href="#">Edit</a></li>
+                        <li><a class="dropdown-item" href="#">List</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                   <a href="#" class="nav-link dropdown-toggle" id="navbarCampaignMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Performance</a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarCampaignMenuLink">
+                        <li><a class="dropdown-item" href="/eval/1">Performance</a></li>
+                        <li><a class="dropdown-item" href="/deals">Entry</a></li>
+                        <li><a class="dropdown-item" href="#">Report</a></li>
+                    </ul>
+                </li>                
+                <li class="nav-item"><a href="#" class="nav-link disabled" tabindex="-1">Reports</a></li>
+            </ul>
+            <div class="navbar-nav ml-auto">
+                <%if (!name) { %>
+                    <a href="/login" class="nav-item nav-link">Login</a>
+                <% }else{ %>
+                    <form action="/logout?_method=DELETE" method="POST" style="max-width:300px;margin:auto;">
+                        <button type="submit" class="btn btn-lg btn-primary btn-block">Logout</button>
+                    </form>
+                <%}%>
+            </div>
+        </div>
+    </div>
+</nav>
