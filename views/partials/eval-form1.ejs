@@ -1,6 +1,21 @@
 <div class="text-center mt-5">
 <form class="form-horizontal bg-light" action="/submit_eval1_form/<%= evalpage %>" method="post" style="width: 100%;margin:auto;">
 
+<!-- Select Employee -->
+<select class="form-select" name="employee_id" id='employee_selection' aria-label="Default select example">
+    <% if (selected_employee > 0) { %>
+      <option>Choose An Employee</option>
+    <%} else { %>
+      <option selected>Choose An Employee</option>
+    <% } %>
+      <% edata.forEach(function(item, index){ %>
+        <% if (selected_employee === item.id) { %>
+          <option selected value="<%= item.id %>"><%= item.first_name + " " + item.last_name %></option>
+        <%} else { %>
+          <option value="<%= item.id %>"><%= item.first_name + " " + item.last_name %></option>
+        <% } %>
+      <% }); %>
+</select>
 
 <!-- Form Name -->
 <legend>Employee Performance Evaluation</legend>

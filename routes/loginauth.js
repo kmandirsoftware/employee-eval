@@ -3,12 +3,14 @@ const loginRouter = (app,mysql,bcrypt,passport,flash,session,methodOverride,chec
 
 const users = [];
 
-bcrypt.hash('guest1234', 10, function(err, hash) {
+bcrypt.hash('dataDog1234!', 10, function(err, hash) {
   // Store hash in database
 	users.push({
-      id: Date.now().toString(),
-      name: "guest",
-      email: "guest@guest.com",
+      id: "2",
+      manager_id: "2",
+      eval_employee_id: "0",
+      name: "jim",
+      email: "jim.brinson@imaginecommunications.com",
       password: hash
     })
     console.log(users);

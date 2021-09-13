@@ -8,6 +8,10 @@ const passport = require('passport')
 const flash = require('express-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
+const {authRole} = require('./routes/basicAuth')
+const redis = require('redis')
+const redisStore = require('connect-redis')(session)
+const client  = redis.createClient()
 
 var app = express();
 
@@ -22,6 +26,8 @@ app.use(express.urlencoded({ extended: false }))
 app.use(flash())
 app.use(session({
   secret: 'secret',
+  // create new redis store.
+  store: new redisStore({ host: 'localhost', port: 6379, client: client,ttl : 260}),
   resave: false,
   saveUninitialized: false
 }))
@@ -31,7 +37,7 @@ app.use(methodOverride('_method'))
 
 
 // routes
-const routes = require('./routes/routes.js')(app, mysql, fs, checkAuthenticated, checkNotAuthenticated,checkAuthenticated);
+const routes = require('./routes/routes.js')(app, mysql, fs, checkAuthenticated, checkNotAuthenticated,checkAuthenticated, authRole);
 const loginroutes = require('./routes/loginauth.js')(app,mysql,bcrypt,passport,flash,session,methodOverride, checkNotAuthenticated);
 
 // catch 404 and forward to error handler

@@ -54,6 +54,16 @@ CREATE TABLE catagory(
 ) ENGINE=InnoDB AUTO_INCREMENT=1;
 INSERT INTO `catagory` VALUES (1,"Job Knowledge"),(2,"Planning and Problem Solving");
 
+DROP TABLE IF EXISTS users;
+CREATE TABLE users(
+  id int NOT NULL AUTO_INCREMENT,
+  manager_id int NOT NULL,
+  name varchar(450) NOT NULL,
+  pw char(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1;
+INSERT INTO `users` VALUES (1,1,"keith","$2b$10$3lZawSjk1GTdi11RuefRIONHJmUIF7Jp6RERCQxInkfeMf5osR20C"),(2,2,'jim',"$2b$10$3eTpwt4NuX5alRQwhRrEFuD.kGO67ZXTF1ktrEIZ/tDAeSgFsdStG"),(3,3,'shawn',"$2b$10$z6lrUmqkM9qoGgtd0r2wgODAcs4NP8CR.QeqNn7X0FsqgJqaGtyFC");
+
 DROP TABLE IF EXISTS eval_form1;
 CREATE TABLE eval_form1(
   id int NOT NULL AUTO_INCREMENT,
@@ -118,7 +128,7 @@ CREATE TABLE `employees` (
   `personal_details_id` int NOT NULL,
   `designation` varchar(75) NOT NULL,
   `date_of_joining` date NOT NULL,
-  `reporting_to` int DEFAULT NULL,
+  `manager_id` int NOT NULL,
   `department_id` int DEFAULT NULL,
   `review_id` int DEFAULT NULL,
   `status` tinyint(1) DEFAULT '1',
@@ -133,7 +143,7 @@ CREATE TABLE `employees` (
 
 LOCK TABLES `employees` WRITE;
 /*!40000 ALTER TABLE `employees` DISABLE KEYS */;
-INSERT INTO `employees` VALUES (2,7,'Software Engineer','2019-07-18',NULL,1,NULL,1,NULL),(5,20,'ty','1991-03-11',NULL,2,NULL,1,NULL),(6,21,'hhhhh','2020-08-09',NULL,2,NULL,1,NULL),(7,22,'8','2020-11-11',NULL,1,NULL,1,NULL);
+INSERT INTO `employees` VALUES (1,7,'Software Engineer','2019-07-18',2,1,NULL,1,NULL),(2,8,'ty','1991-03-11',2,1,NULL,1,NULL);
 /*!40000 ALTER TABLE `employees` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -167,7 +177,7 @@ CREATE TABLE `personal_details` (
 
 LOCK TABLES `personal_details` WRITE;
 /*!40000 ALTER TABLE `personal_details` DISABLE KEYS */;
-INSERT INTO `personal_details` VALUES (1,'Keith','Gerhards','1964-06-23',"971 Galapago Sreet",NULL,"Denver","Colorado","USA",3038808008,NULL,'keith.gerhards@gmail.com'),(2,"James","Brinson",NULL,NULL,NULL,NULL,NULL,"USA",303,NULL,"jim.brinson@imaginecommunications.com"),(3,"Shawn","Oles",NULL,NULL,NULL,NULL,NULL,"USA",303,NULL,"shawn.oles@imaginecommunications.com");
+INSERT INTO `personal_details` VALUES (1,'Keith','Gerhards','1964-06-23',"971 Galapago Sreet",NULL,"Denver","Colorado","USA",3038808008,NULL,'keith.gerhards@gmail.com'),(2,"James","Brinson",NULL,NULL,NULL,NULL,NULL,"USA",303,NULL,"jim.brinson@imaginecommunications.com"),(3,"Shawn","Oles",NULL,NULL,NULL,NULL,NULL,"USA",303,NULL,"shawn.oles@imaginecommunications.com"),(7,"Jerrame","Hertz",NULL,NULL,NULL,NULL,NULL,"USA",303,NULL,"jerrame.hertz@imaginecommunications.com"),(8,"Ron","Pollizi",NULL,NULL,NULL,NULL,NULL,"USA",303,NULL,"ron.pallizi@imaginecommunications.com");
 /*!40000 ALTER TABLE `personal_details` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
