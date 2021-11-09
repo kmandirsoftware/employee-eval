@@ -1,0 +1,14 @@
+<div class="text-center mt-5">
+<form action="/edit_submit_employee" method="post" class="form-signin" style="max-width:300px;margin:auto;">
+  <div class="form-group">
+    <!-- Select Employee -->
+    <select class="form-select" name="employee_id" id='employee_selection' aria-label="Default select example">
+      <option selected>Choose An Employee</option>
+      <% data.forEach(function(item, index){ %>
+        <option value="<%= item.id %>"><%= item.first_name + " " + item.last_name %></option>
+      <% }); %>
+    </select>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+

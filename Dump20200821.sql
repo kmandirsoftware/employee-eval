@@ -46,6 +46,22 @@ CREATE TABLE titles(
 ) ENGINE=InnoDB AUTO_INCREMENT=1;
 INSERT INTO `titles` VALUES (1,'Senior BackEnd Software'),(2,'Senior FrontEnd Software'),(3,'BackEnd Software'),(4,'FrontEnd Software'),(5,'Senior FullStack Software'),(6,'FullStack Software');
 
+DROP TABLE IF EXISTS cycle;
+CREATE TABLE cycle(
+  id int NOT NULL AUTO_INCREMENT,
+  name varchar(450) NOT NULL,
+  start_date date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1;
+INSERT INTO `cycle` VALUES (1,"Q3-2021","09-13-2021");
+
+DROP TABLE IF EXISTS performance_catagory;
+CREATE TABLE performance_category(
+  id int NOT NULL AUTO_INCREMENT,
+  name varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1;
+
 DROP TABLE IF EXISTS catagory;
 CREATE TABLE catagory(
   id int NOT NULL AUTO_INCREMENT,
@@ -53,6 +69,8 @@ CREATE TABLE catagory(
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1;
 INSERT INTO `catagory` VALUES (1,"Job Knowledge"),(2,"Planning and Problem Solving");
+INSERT INTO `catagory` VALUES (3,"Productivity"),(4,"Communication Skills");
+INSERT INTO `catagory` VALUES (5,"Team Work"),(6,"Tech Lead Skills");
 
 DROP TABLE IF EXISTS users;
 CREATE TABLE users(
@@ -72,8 +90,11 @@ CREATE TABLE eval_form1(
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1;
 INSERT INTO `eval_form1` VALUES (1,1,"Understands Job Requirements and responsibilities"),(2,1,"Possesses required skills and knowledge for the job"),(3,1,"Keeps abreast of current developments pertainingto the job");
-
 INSERT INTO `eval_form1` VALUES (4,2,"Works in an organized manner"),(5,2,"Requires minimal supervision"),(6,2,"Can identify problems"),(7,2,"Reacts to problems in appropriate time");
+INSERT INTO `eval_form1` VALUES (8,3,"Achieves established goals"),(9,3,"Can multi-task between several projects"),(10,3,"Meets productivity standards");
+INSERT INTO `eval_form1` VALUES (11,4,"Articulates ideas effectively"),(12,4,"Participates in meetings"),(13,4,"Listens carefully");
+INSERT INTO `eval_form1` VALUES (14,5,"Is an effective team player"),(15,5,"Offers assistance to team members"),(16,5,"Works well with different personality types"),(17,5,"Participates in team discussions");
+INSERT INTO `eval_form1` VALUES (18,6,"Clearly identifies goals to team members"),(19,6,"Holds themself accountable to goals and objectives"),(20,6,"Reports success towards reaching goals"),(21,6,"Positively motivates others to achieve goals and gain skills");
 --
 -- Dumping data for table `departments`
 --
@@ -88,6 +109,7 @@ DROP TABLE IF EXISTS `review`;
 CREATE TABLE `review` (
   `id` int NOT NULL AUTO_INCREMENT,
   `employee_id` int NOT NULL,
+   `cycle_id` int NOT NULL,
   `date_of_review` date DEFAULT NULL,
   `performance_level` enum('High','Medium','Low'),
   `potential` enum('High','Medium','Low'),

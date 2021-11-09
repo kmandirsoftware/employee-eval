@@ -12,8 +12,11 @@ const {authRole} = require('./routes/basicAuth')
 const redis = require('redis')
 const redisStore = require('connect-redis')(session)
 const client  = redis.createClient()
+const bodyParser = require('body-parser');
 
 var app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 
 // view engine setup
