@@ -177,9 +177,10 @@ const confquery = async (cb) => {
    // Display Employees based on login user
    app.get("/edit",checkAuthenticated, function(req,res,next) {
        var lsqlstmt = "select * from employees,personal_details where employees.personal_details_id = personal_details.id and employees.manager_id =?"
+	   console.log(lsqlstmt);
        DbCon.query(lsqlstmt, req.user.manager_id, function(error, results, fields){
             res.render('update-employee-lst', {page:'Employee Selection', menuId:'List', data: results, name: req.user.name});
-            console.log("Query results(inside): " + JSON.stringify(results));             
+            //console.log("Query results(inside): " + JSON.stringify(results));             
         });
    })
    app.post('/edit_submit_employee', function(req, res){

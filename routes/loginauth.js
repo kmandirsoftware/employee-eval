@@ -1,11 +1,36 @@
 
 const loginRouter = (app,mysql,bcrypt,passport,flash,session,methodOverride,checkNotAuthenticated,checkAuthenticated) => {
 
-const users = [];
+const getDbConPw = async () => { 
+        return await mysql.createConnection({
+        host: 'localhost',
+        user: 'emp-node',
+        password: 'emp-532!',
+        database: 'ems',
+        multipleStatements: true
+    })
+}
 
-bcrypt.hash('dataDog1234!', 10, function(err, hash) {
+var users = [];
+var usersold = [];
+function setusers(user){
+   users = user;
+   console.log(users);
+}
+const confuserquery = async (cb) => { 
+   const con = await getDbConPw()
+   await con.query("select * from users", function(error, results, fields){
+	   var resultArray = Object.values(JSON.parse(JSON.stringify(results)))
+     cb(resultArray);
+   })
+   await con.end()
+   //console.log(myloop)
+ }
+ confuserquery(setusers)
+
+bcrypt.hash('caliDog1234!', 10, function(err, hash) {
   // Store hash in database
-	users.push({
+	usersold.push({
       id: "2",
       manager_id: "2",
       eval_employee_id: "0",
@@ -13,7 +38,7 @@ bcrypt.hash('dataDog1234!', 10, function(err, hash) {
       email: "jim.brinson@imaginecommunications.com",
       password: hash
     })
-    console.log(users);
+    console.log(usersold);
 });
 
 const initializePassport = require('./passport-config')
