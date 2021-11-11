@@ -10,3 +10,10 @@ All boilerplate code managed by [express generator](https://expressjs.com/en/sta
 
 ## Screenshot
 <img src="public/img/screenshot.png">
+
+## to start forever
+ forever start --uid employeeApp --killSignal=SIGTERM -c 'nodemon --exitcrash' app.js
+
+# to stop forever
+forever stop employeeApp
+

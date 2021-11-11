@@ -15,7 +15,6 @@ var users = [];
 var usersold = [];
 function setusers(user){
    users = user;
-   console.log(users);
 }
 const confuserquery = async (cb) => { 
    const con = await getDbConPw()
@@ -28,7 +27,7 @@ const confuserquery = async (cb) => {
  }
  confuserquery(setusers)
 
-bcrypt.hash('caliDog1234!', 10, function(err, hash) {
+bcrypt.hash('rightsDog1234!', 10, function(err, hash) {
   // Store hash in database
 	usersold.push({
       id: "2",
