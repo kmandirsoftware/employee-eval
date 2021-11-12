@@ -112,7 +112,7 @@
         <label for="evalnote<%= index %>">Notes</label>
     <textarea type="text" class="form-control" name="evalnote<%= index %>" id="evalnote<%= index %>" placeholder=
 	<%if( (typeof notes =='object') && notes.length > 0 ){%>
-	   <%=notes[index].comments%> 
+	   "<%=notes[index].comments%>" 
  	<%} else {%>
 		"Enter Notes"
  	<%}%>

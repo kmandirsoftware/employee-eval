@@ -207,6 +207,7 @@ const confquery = async (cb) => {
        DbCon.query(sqlstmt2, req.user.manager_id, function(error, results, fields){
         res.render('update-employee-eval', {page:'Employee Eval'+req.params.id, evalpage: req.params.id, data: results[0], catdata: results[1], edata: results[2], selected_employee: parseInt(req.session.user.eval_employee_id), bsubmit: submitbuttonmessage, menuId:'eval1', name: req.user.name, reviewed: results[3], notes: results[4]});
         console.log("Query results(inside): " + JSON.stringify(results[4]));             
+        console.log("Just One: " + JSON.stringify(results[4][0].comments));             
       });
    });
 

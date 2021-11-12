@@ -36,7 +36,7 @@ CREATE TABLE projects (
   status tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1;
-INSERT INTO `projects` VALUES(1,"XGLinear",1),(2,"Silk",1),(3,"GamePlan",1);
+INSERT INTO `projects` VALUES(1,"XGLinear",1),(2,"Silk",1),(3,"GamePlan",1),(4,"RightsandScheduling",1);
 
 DROP TABLE IF EXISTS titles;
 CREATE TABLE titles(
@@ -55,7 +55,7 @@ CREATE TABLE cycle(
 ) ENGINE=InnoDB AUTO_INCREMENT=1;
 INSERT INTO `cycle` VALUES (1,"Q3-2021","09-13-2021");
 
-DROP TABLE IF EXISTS performance_catagory;
+DROP TABLE IF EXISTS performance_category;
 CREATE TABLE performance_category(
   id int NOT NULL AUTO_INCREMENT,
   name varchar(45) NOT NULL,
@@ -80,7 +80,6 @@ CREATE TABLE users(
   pw char(100) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1;
-INSERT INTO `users` VALUES (1,1,"keith","$2b$10$3lZawSjk1GTdi11RuefRIONHJmUIF7Jp6RERCQxInkfeMf5osR20C"),(2,2,'jim',"$2b$10$3eTpwt4NuX5alRQwhRrEFuD.kGO67ZXTF1ktrEIZ/tDAeSgFsdStG"),(3,3,'shawn',"$2b$10$z6lrUmqkM9qoGgtd0r2wgODAcs4NP8CR.QeqNn7X0FsqgJqaGtyFC");
 
 DROP TABLE IF EXISTS eval_form1;
 CREATE TABLE eval_form1(
@@ -163,12 +162,6 @@ CREATE TABLE `employees` (
 -- Dumping data for table `employees`
 --
 
-LOCK TABLES `employees` WRITE;
-/*!40000 ALTER TABLE `employees` DISABLE KEYS */;
-INSERT INTO `employees` VALUES (1,7,'Software Engineer','2019-07-18',2,1,NULL,1,NULL),(2,8,'ty','1991-03-11',2,1,NULL,1,NULL);
-/*!40000 ALTER TABLE `employees` ENABLE KEYS */;
-UNLOCK TABLES;
-
 --
 -- Table structure for table `personal_details`
 --
@@ -180,15 +173,15 @@ CREATE TABLE `personal_details` (
   `id` int NOT NULL AUTO_INCREMENT,
   `first_name` varchar(75) NOT NULL,
   `last_name` varchar(75) NOT NULL,
-  `dob` date NOT NULL,
+  `dob` date ,
   `permanent address_line1` text,
   `permanent_address_line2` text,
   `permanent_address_city` text,
   `permanent_address_state` text,
   `permanent_address_country` text,
-  `contact_number` bigint NOT NULL,
+  `contact_number` bigint ,
   `alternate_contact_number` bigint DEFAULT NULL,
-  `email` varchar(45) NOT NULL,
+  `email` varchar(45) ,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -199,7 +192,6 @@ CREATE TABLE `personal_details` (
 
 LOCK TABLES `personal_details` WRITE;
 /*!40000 ALTER TABLE `personal_details` DISABLE KEYS */;
-INSERT INTO `personal_details` VALUES (1,'Keith','Gerhards','1964-06-23',"971 Galapago Sreet",NULL,"Denver","Colorado","USA",3038808008,NULL,'keith.gerhards@gmail.com'),(2,"James","Brinson",NULL,NULL,NULL,NULL,NULL,"USA",303,NULL,"jim.brinson@imaginecommunications.com"),(3,"Shawn","Oles",NULL,NULL,NULL,NULL,NULL,"USA",303,NULL,"shawn.oles@imaginecommunications.com"),(7,"Jerrame","Hertz",NULL,NULL,NULL,NULL,NULL,"USA",303,NULL,"jerrame.hertz@imaginecommunications.com"),(8,"Ron","Pollizi",NULL,NULL,NULL,NULL,NULL,"USA",303,NULL,"ron.pallizi@imaginecommunications.com");
 /*!40000 ALTER TABLE `personal_details` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
